@@ -1,0 +1,32 @@
+{
+    "name": "derrickjames/africas-talking",
+    "description": "Laravel5 package for Africa's Talking SMS and Voice API.",
+    "keywords": [
+        "sms",
+        "voice",
+        "africas talking",
+        "africa's talking",
+        "africas talking api"
+    ],
+    "homepage": "https://github.com/derrickjames/africas-talking",
+    "licence": "MIT",
+    "authors": [
+        {
+            "name": "Mushangi Derrick",
+            "email": "dmushangi@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "^6.2",
+        "illuminate/support": "~5.0"
+    },
+    "autoload": {
+        "files": [
+            "src/AfricasTalking/Support/helpers.php"
+        ],
+        "psr-4": {
+            "DerrickJames\\AfricasTalking\\": "src/AfricasTalking/"
+        }
+    }
+}
