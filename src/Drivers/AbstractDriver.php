@@ -246,6 +246,11 @@ abstract class AbstractDriver
      */
     protected function getRequest($url)
     {
-        return $this->getHttpClient()->request('GET', $url);
+        return $this->getHttpClient()->request('GET', $url, [
+            'headers' => [
+                'Accept' => 'application/json',
+                'apikey' => $this->apiKey
+            ]
+        ]);
     }
 }

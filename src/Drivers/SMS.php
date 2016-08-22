@@ -1,8 +1,8 @@
 <?php
 
-namespace DerrickJames\AfricasTalking\Drivers;
+namespace SMSNotifier\Drivers;
 
-use DerrickJames\AfricasTalking\Validators\SMSValidator;
+use SMSNotifier\Validators\SMSValidator;
 
 class SMS extends AbstractDriver
 {
@@ -85,12 +85,30 @@ class SMS extends AbstractDriver
 
         $fields = [
             'to' => $this->commaSeparate($this->to),
-            'from' => $this->from,
             'message' => $this->message
         ];
 
-        $options = $this->config['options']['sms'];
+        if (strlen($this->from) != 0) {
+            $fields['from'] = $this->from;
+        }
+
+        $options = $this->checkOptions($this->config['options']['sms']);
 
         return array_merge($this->buildParameters($fields), $options);
+    }
+
+    /**
+     * Check set options
+     *
+     * @param array $options
+     * @return array
+     */
+    protected function checkOptions($options)
+    {
+        if (strlen($options['retryDurationInHours']) == 0) {
+            $options = array_except($options, 'retryDurationInHours');
+        }
+
+        return $options;
     }
 }
