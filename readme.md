@@ -17,20 +17,23 @@ Install the package via composer.
 
 Add the service provider by modifying the `providers` array in `config/app.php`
 to include `AfricasTalkingServiceProvider`.
-
-    'providers' => [
-        //...
-        'DerrickJames\AfricasTalking\AfricasTalkingServiceProvider'
-    ],
+```php
+'providers' => [
+    //...
+    'DerrickJames\AfricasTalking\AfricasTalkingServiceProvider'
+],
+```
 
 Add the facade to the `aliases` array in `config/app.php`.
-
-    'aliases' => [
-        //...
-        'AfricasTalking' => 'DerrickJames\AfricasTalking\Facades\AfricasTalking'
-    ],
-
-    $ php artisan vendor:publish
+```php
+'aliases' => [
+    //...
+    'AfricasTalking' => 'DerrickJames\AfricasTalking\Facades\AfricasTalking'
+],
+```
+```bash
+$ php artisan vendor:publish
+```
 
 In your .env file, setup your API Key and username.
 
@@ -40,46 +43,50 @@ In your .env file, setup your API Key and username.
 ## Usage
 
 Using the helper.
-
-    public function sendSMS()
-    {
-        $response = africasTalking()
-            ->driver('sms')
-            ->to('+254721234567')
-            ->message('Test Africas Talking service package.')
-            ->send();
-    }
+```php
+public function sendSMS()
+{
+    $response = africasTalking()
+        ->driver('sms')
+        ->to('+254721234567')
+        ->message('Test Africas Talking service package.')
+        ->send();
+}
+```
 
 Using the factory.
 
-    use DerrickJames\AfricasTalking\Contracts\Factory;
+```php
+use DerrickJames\AfricasTalking\Contracts\Factory;
 
-    class NotifierController extends Controller
-    {
-        protected $provider;
+class NotifierController extends Controller
+{
+    protected $provider;
 
-        public function __construct(Factory $provider) {
-            $this->provider = $provider;
-        }
-
-        public function sendSMS() {
-            $response = $this->provider
-                 ->driver('sms')
-                 ->to('+254724147772')
-                 ->message('Test Africas Talking SMS package.')
-                 ->send();
-        }
+    public function __construct(Factory $provider) {
+        $this->provider = $provider;
     }
 
-Using the facade.
-
-    use AfricasTalking;
-
-    public function sendSMS()
-    {
-        $response = AfricasTalking::driver('sms')
+    public function sendSMS() {
+        $response = $this->provider
+             ->driver('sms')
              ->to('+254724147772')
              ->message('Test Africas Talking SMS package.')
              ->send();
     }
+}
+```
 
+Using the facade.
+
+```php
+use AfricasTalking;
+
+public function sendSMS()
+{
+    $response = AfricasTalking::driver('sms')
+         ->to('+254724147772')
+         ->message('Test Africas Talking SMS package.')
+         ->send();
+}
+```
