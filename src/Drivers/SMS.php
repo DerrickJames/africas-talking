@@ -1,6 +1,6 @@
 <?php
 
-namespace SMSNotifier\Drivers;
+namespace DerrickJames\AfricasTalking\Drivers;
 
 use SMSNotifier\Validators\SMSValidator;
 
