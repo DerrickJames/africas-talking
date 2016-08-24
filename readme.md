@@ -59,6 +59,8 @@ public function sendSMS()
         ->to(['+254721234567'])
         ->message('Test Africas Talking API service SMS driver.')
         ->send();
+
+    dd(json_decode($response)); // instance of GuzzleHttp/Psr7/Response
 }
 ```
 
@@ -81,6 +83,8 @@ class NotifierController extends Controller
              ->to(['+254724147352'])
              ->message('Test Africas Talking API SMS driver.')
              ->send();
+
+        dd(json_decode($response)); // instance of GuzzleHttp/Psr7/Response
     }
 }
 ```
@@ -96,5 +100,7 @@ public function sendSMS()
          ->to(['+254724147802'])
          ->message('Test Africas Talking API SMS driver.')
          ->send();
+
+    dd(json_decode($response)); // instance of GuzzleHttp/Psr7/Response
 }
 ```
