@@ -44,9 +44,9 @@ In your .env file, setup your API Key and username.
 
 The package uses three different drivers which expose fluent interfaces for subscription, sms and voice.
 
-    * Subscription - Create a subscription to Africa's Talking service.
-    * SMS - Send SMS messages and fetch messages.
-    * Voice - Make voice calls
+  * Subscription - Create a subscription to Africa's Talking service.
+  * SMS - Send SMS messages and fetch messages.
+  * Voice - Make voice calls
 
 Be sure to specify the driver when interacting with the package.
 
