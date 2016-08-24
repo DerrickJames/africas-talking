@@ -64,6 +64,18 @@ public function sendSMS()
 }
 ```
 
+```php
+public function sendSMS()
+{
+    $response = africasTalking('sms')
+        ->to(['+254721234567'])
+        ->message('Test Africas Talking API service SMS driver.')
+        ->send();
+
+    dd(json_decode($response)); // instance of GuzzleHttp/Psr7/Response
+}
+```
+
 Using the factory.
 
 ```php
