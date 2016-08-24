@@ -2,7 +2,7 @@
 
 namespace DerrickJames\AfricasTalking\Drivers;
 
-use SMSNotifier\Validators\SMSValidator;
+use DerrickJames\AfricasTalking\Validators\SMSValidator;
 
 class SMS extends AbstractDriver
 {
@@ -19,7 +19,7 @@ class SMS extends AbstractDriver
      * @pram string $message
      * @return $this
      */
-    public function message($message)
+   public function message($message)
     {
         $this->message = $message;
 

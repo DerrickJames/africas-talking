@@ -42,14 +42,21 @@ In your .env file, setup your API Key and username.
 
 ## Usage
 
+The package uses three different drivers which expose fluent interfaces for subscription, sms and voice.
+    * Subscription - Create a subscription to Africa's Talking service.
+    * SMS - Send SMS messages and fetch messages.
+    * Voice - Make voice calls
+
+Be sure to specify the driver when interacting with the package.
+
 Using the helper.
 ```php
 public function sendSMS()
 {
     $response = africasTalking()
         ->driver('sms')
-        ->to('+254721234567')
-        ->message('Test Africas Talking service package.')
+        ->to(['+254721234567'])
+        ->message('Test Africas Talking API service SMS driver.')
         ->send();
 }
 ```
@@ -70,8 +77,8 @@ class NotifierController extends Controller
     public function sendSMS() {
         $response = $this->provider
              ->driver('sms')
-             ->to('+254724147772')
-             ->message('Test Africas Talking SMS package.')
+             ->to(['+254724147352'])
+             ->message('Test Africas Talking API SMS driver.')
              ->send();
     }
 }
@@ -85,8 +92,8 @@ use AfricasTalking;
 public function sendSMS()
 {
     $response = AfricasTalking::driver('sms')
-         ->to('+254724147772')
-         ->message('Test Africas Talking SMS package.')
+         ->to(['+254724147802'])
+         ->message('Test Africas Talking API SMS driver.')
          ->send();
 }
 ```
