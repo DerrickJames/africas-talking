@@ -13,9 +13,9 @@ abstract class AbstractValidator
     public function validatePhoneNumber($phoneNumber)
     {
         if (is_array($phoneNumber)) {
-            $numbers = explode(',', $phoneNumber);
+            $this->validatePhoneNumberArray($phoneNumber);
 
-            foreach($numbers as $number) {
+            foreach($phoneNumber as $number) {
                 $this->validateNumber($number);
             }
 
@@ -25,6 +25,22 @@ abstract class AbstractValidator
         $this->validateNumber($phoneNumber);
 
         return true;
+    }
+
+    /**
+     * Validate phone number array.
+     *
+     * @param array $phoneNumber
+     * @return void
+     * @throws \InvalidArgumentException
+     */
+    protected function validatePhoneNumberArray($phoneNumber)
+    {
+        if (count($phoneNumber) === 0) {
+            throw new \InvalidArgumentException(
+                'Recipient property is required and must be an array'
+            );
+        }
     }
 
     /**
